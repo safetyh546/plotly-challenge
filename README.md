@@ -7,6 +7,6 @@ The dataset reveals that a small handful of microbial species (also called opera
 
 
 ## Main files
-1) Index.html - main html that calls the javascript and data .js files<br />
-2) static\js\app.js - javascript code used generate plotly charts and populate informational table<br />
-3) statis\js\samples.json - belly button data JSON<br />
+1) Index.html - main html that calls the javascript .js files<br />
+2) static\js\app.js - javascript code used to generate plotly charts and populate informational table<br />
+3) statis\js\samples.json - belly button data JSON referenced by app.js<br />
