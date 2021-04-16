@@ -8,7 +8,7 @@ function optionChanged(SubjectID) {
 
 //load drop down list
 //call optionchanged function for first ID to populate on initial page load
-d3.json("samples.json").then((data) =>{ 
+d3.json("./data/samples.json").then((data) =>{ 
     console.log('Test 1')
     console.log(data)
 
@@ -33,7 +33,7 @@ d3.json("samples.json").then((data) =>{
 
 //function to load the demograph info box
 function demographInfo(SubjectID) {
-        d3.json("samples.json").then((data) => {
+        d3.json("./data/samples.json").then((data) => {
 
         var inputValueData = data.samples.filter(item => item.id === SubjectID);
         console.log(inputValueData);
@@ -64,7 +64,7 @@ function demographInfo(SubjectID) {
 
 //function build bubble and bar chart
 function BuildBarAndBubble(SubjectID) {
-        d3.json("samples.json").then((data) => {
+        d3.json("./data/samples.json").then((data) => {
 
         var inputValueData = data.samples.filter(item => item.id === SubjectID);
         console.log(inputValueData);
@@ -129,7 +129,25 @@ function BuildBarAndBubble(SubjectID) {
                 opacity: 0.6
             };
             
-            Plotly.newPlot('bubble',bubbleChartData, bubbleChartLayout);
+            var guage_wfreq = data.metadata.filter(item => item.id === parseInt(SubjectID))[0].wfreq
+
+            Plotly.newPlot('bubble',bubbleChartData, bubbleChartLayout)
+            var data1 = [
+                {
+                  domain: { x: [0, 1], y: [0, 1] },
+                  value: guage_wfreq,
+                  title: { text: "Wash Frequency Per Individual" },
+                  type: "indicator",
+                  mode: "gauge+number",
+                  delta: { reference: 400 },
+                  gauge: { axis: { range: [null, 9] } }
+                }
+              ];
+              
+              var layout1 = { width: 600, height: 400 };
+              Plotly.newPlot('gauge', data1, layout1);
+              console.log(data)
+
 
         });
 
