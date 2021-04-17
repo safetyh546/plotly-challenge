@@ -109,12 +109,12 @@ function BuildBarAndBubble(SubjectID) {
         var bubbleChartData = 
             [{
                 x: xaxis,
-                y: top10_sampleValues,
+                y: inputValueData[0].sample_values,
                 mode: 'markers',
                 text: top10_OTULabels,
                 marker: 
                 {
-                size: top10_sampleValues,
+                size: inputValueData[0].sample_values,
                 color: xaxis,
                 colorscale: [[0, 'rgb(51, 70, 255)'], [1, 'rgb(66, 255, 51)']]  //0 color is bluish, 1 color is green from https://htmlcolorcodes.com/
                 }
